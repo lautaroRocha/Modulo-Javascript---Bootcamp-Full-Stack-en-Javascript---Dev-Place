@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-
+        section>div{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
         input{
             width: 50ch;
             height: 1.5rem;
@@ -20,8 +24,10 @@
 <main>
     <section>
         <h1>Calculadora de IVA</h1>
+        <div>
             <input type="number" placeholder="Precio del producto..." id="precio">
             <button onclick="calcIVA()"></button>
+        </div>
             <p>El IVA es 
                 <span id="iva">___</span>
             y el valor total es de 

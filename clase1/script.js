@@ -33,14 +33,12 @@
 // Has hecho una compra y sabes el precio del producto y su iva. Haz un script que te calcule el precio total que vas a pagar por tu compra.
 // Te recuerdo que para calcular el total debes sumar al precio el resultado de multiplicar precio por el iva y dividir por 100.
 
-
-
 function calcIVA(){
     const price = document.querySelector('#precio');
     let iva = document.querySelector('#iva');
     let total = document.querySelector('#valor-total');
 
-    iva.textContent = price.value * 0.21
+    iva.textContent = price.value * 0.21;
     total.textContent= parseFloat(price.value) + parseFloat(iva.textContent);
 }
 
@@ -64,7 +62,6 @@ function enterGameRoom(){
         access.textContent = "Puedes accedes a la sala de Consolas, a la de Juegos 2D y a la de Juegos 3D y ala de Realidad Virtual"
         break;
     }
-
 }
 
 // En una tienda coches se quiere redirigir a un cliente a una sección de acuerdo al tipo de coche que elija. Si elige tipo gasolina o 1 se le enviará a la oficina numero 100. Si elije el tipo diesel o 2 irá a la oficia 200 y si elige electrico o 3 se le enviará a la ofician 300.
@@ -81,7 +78,6 @@ function sendToOffice(){
         case 'eléctrico':   
         alert('Muy bien! Pase por la oficina 300');
         break;
-
     }
     carType.value = "";
 }
@@ -107,8 +103,12 @@ function calcDisc(){
     }else if(moneySpent > 500){
         discount = (moneySpent * 15)/100;
     }
+
     finalPrice = moneySpent - discount;
-    result.textContent = "El precio final es de "+ finalPrice +" euros , se han descontado " + discount + " euros.";
+
+    if(moneySpent){
+    result.textContent = `El precio final es de ${finalPrice} euros, se han descontado ${discount} euros.`;
+    }
 }
 
 
@@ -119,7 +119,7 @@ function countTo(){
     let result = document.querySelector('#nums')
     let count = [];
 
-    for(let i = 0; i <= finalNumber; i++){
+    for(let i = 0; i === finalNumber; i++){
         count.push(i);
     }
     result.textContent= count.join(', '); 
@@ -133,17 +133,17 @@ function returnRemainderTwo(){
     let topNumber = document.querySelector('#top-number').value;
     let remainderOutput = document.querySelector('#remainder');
     let lesserNumbers = []
+
     for(let i = 1; i <= topNumber; i++){
         lesserNumbers.push(i);
     }
+
     let remainderList = lesserNumbers.filter(num => num % 3 === 2);
 
-    remainderOutput.textContent = remainderList.join(', ')+".";
-
-
+    if(topNumber){
+        remainderOutput.textContent = remainderList.join(', ')+".";
+    }
 }
-
-
 
 // .Programa un script que pida al usuario que teclee 4 números (uno cada vez). Con esos números el programa deberá calcular la media aritmética. O sea la suma de los 4 números dividida entre 4
 
@@ -151,13 +151,12 @@ function media(){
     
     let result = document.querySelector('#media');
 
-    let num1 = prompt('Ingrese un número')
-    let num2 = prompt('Ingrese un número')
-    let num3 = prompt('Ingrese un número')
-    let num4 = prompt('Ingrese un número')
+    let num1 = parseFloat(prompt('Ingrese un número'));
+    let num2 = parseFloat(prompt('Ingrese un número'));
+    let num3 = parseFloat(prompt('Ingrese un número'));
+    let num4 = parseFloat(prompt('Ingrese un número'));
 
-
-    let promedio = ( parseInt(num1) + parseInt(num2) + parseInt(num3) + parseInt(num4) ) / 4;
+    let promedio = ( num1 + num2 + num3 + num4 ) / 4;
 
     result.textContent = "El promedio entre " + num1 + ", " + num2+ ", " + num3 + " y "+ num4+ " es " + promedio;
 }
