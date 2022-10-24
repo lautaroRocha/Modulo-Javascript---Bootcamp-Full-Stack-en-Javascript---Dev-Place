@@ -4,9 +4,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        input{
+            width: 50ch;
+            height: 1.5rem;
+        }    
+        button{
+            height: 1.5rem;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
+<main>
+    <section>
+        <h1>Calculadora de IVA</h1>
+            <input type="number" placeholder="Precio del producto..." id="precio">
+            <button onclick="calcIVA()"></button>
+            <p>El IVA es 
+                <span id="iva">___</span>
+            y el valor total es de 
+            <span id="valor-total">___</span>
+            </p>
+    </section>
+    <section>
+        <h1>Acceso a Sala de Juegos</h1>
+        <div>
+            <input type="number" placeholder="¿Cuántos tickets quieres?" min="1" max="4" id="tickets">
+            <button onclick="enterGameRoom()"></button>
+            <p id="access">
+            </p>
+        </div>
+    </section>
+    <section>
+        <h1>Tienda de Coches</h1>
+        <input id="car-type" list="cars" placeholder="Seleccione qué tipo de auto le interesa" type="text" style="width: 30vw;" onchange="sendToOffice()"></input>
+       <datalist id="cars">
+        <option value="gasolina"></option>
+        <option value="diesel"></option>
+        <option value="eléctrico"></option>
+       </datalist>
+
+    </section>
+    <section>
+        <h1>Calcular Descuento</h1>
+        <div>
+            <input type="number" placeholder="Valor de la compra" id="moneySpent">
+            <button onclick="calcDisc()"></button>
+            <p id="disc">
+            </p>
+        </div>
+    </section>
+    <section>
+        <h1>Muchos números</h1>
+        <div>
+            <input type="number" placeholder="Elige hasta donde contar" id="num">
+            <button onclick="countTo()"></button>
+            <p id="nums">
+            </p>
+        </div>
+    </section>
+    <section>
+        <h1>Mostrar números menores al ingresado, <br>
+        cuyo módulo 3 sea 2.</h1>
+        <div>
+            <input type="number" placeholder="Ingrese su número" id="top-number">
+            <button onclick="returnRemainderTwo()"></button>
+            <p id="remainder">
+            </p>
+        </div>
+    </section>
+    <section>
+        <h1>Calcular media aritmética</h1>
+        <div>
+            <button onclick="media()">EMPEZAR</button>
+            <p id="media">
+            </p>
+        </div>
+    </section>
+</main>
     <script src="script.js"></script>
 </body>
 </html>
