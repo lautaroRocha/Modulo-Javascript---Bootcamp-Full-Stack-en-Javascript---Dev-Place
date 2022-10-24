@@ -1,7 +1,7 @@
 function iniciarPrograma(){
     let opcion = prompt('¿Qué programa quieres correr? 1- Actividades según el clima / 2 - Verificación de edad / 3 - Todos tus años');
 
-    if(option){
+    if(opcion){
     switch(opcion){
         case '1':
             actividadesSegunClima();
