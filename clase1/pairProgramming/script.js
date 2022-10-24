@@ -11,6 +11,7 @@ function iniciarPrograma(){
             break;
         case '3':
             todosTusAños();
+            break;
         default:
             alert('Es necesario elegir una opción');
             iniciarPrograma()
@@ -73,9 +74,7 @@ function todosTusAños(){
     for(let i = añoNacimiento; i <= añoActual; i++){
         todosTusAños.push(i)
     }
-
     alert(todosTusAños)
-
 }
 
 
