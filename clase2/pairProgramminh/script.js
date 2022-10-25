@@ -9,12 +9,15 @@
 let agenda = [];
 
 const agregarContacto = (dni, nombre, apellido, telefono) => {
-    if(chekearDatos(dni, nombre, apellido, telefono)){
-        let contacto = [dni, nombre, apellido, telefono];
-        agenda.push(contacto);
-        console.log('se ha añadido un contacto nuevo')
-    }else{
-        console.log('DNI y TELEFONO deben ser números, NOMBRE Y APELLIDO deben ser texto')
+    let contactoExiste = agenda.find( ele => ele[0] === dni );
+    if(!contactoExiste){
+        if(chekearDatos(dni, nombre, apellido, telefono)){
+            let contacto = [dni, nombre, apellido, telefono];
+            agenda.push(contacto);
+            console.log('se ha añadido un contacto nuevo')
+        }else{
+            console.log('DNI y TELEFONO deben ser números, NOMBRE Y APELLIDO deben ser texto')
+        }
     }
 }
 
