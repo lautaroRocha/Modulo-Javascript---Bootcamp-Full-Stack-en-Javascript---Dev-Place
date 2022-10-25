@@ -8,11 +8,8 @@
 
 let agenda = [];
 
-
-
-
 const agregarContacto = (dni, nombre, apellido, telefono) => {
-    if( !isNaN(dni) && isNaN(nombre) && isNaN(apellido) && !isNaN(telefono)){
+    if(chekearDatos(dni, nombre, apellido, telefono)){
         let contacto = [dni, nombre, apellido, telefono];
         agenda.push(contacto);
     }else{
@@ -59,5 +56,14 @@ function verIndice(dni){
     let indiceAVer = agenda.indexOf(contactoAVer);
     console.log(agenda[indiceAVer]);
 }
+
+function chekearDatos(dni, nombre, apellido, telefono){
+    if( !isNaN(dni) && isNaN(nombre) && isNaN(apellido) && !isNaN(telefono)){
+        return true
+    }else{
+        return false
+    }
+}
+
 
 
