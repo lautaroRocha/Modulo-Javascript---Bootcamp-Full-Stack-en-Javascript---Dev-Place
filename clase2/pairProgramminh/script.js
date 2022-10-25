@@ -12,10 +12,12 @@ const agregarContacto = (dni, nombre, apellido, telefono) => {
     if(chekearDatos(dni, nombre, apellido, telefono)){
         let contacto = [dni, nombre, apellido, telefono];
         agenda.push(contacto);
+        console.log('se ha añadido un contacto nuevo')
     }else{
         console.log('DNI y TELEFONO deben ser números, NOMBRE Y APELLIDO deben ser texto')
     }
 }
+
 
 const eliminarContacto = (dni) => {
     if(agenda.length === 0){
@@ -45,7 +47,7 @@ const verContacto = (dni) => {
 //FUNCIONES AUXILIARES
 
 function eliminarIndice(dni){
-    let contactoAEliminar = agenda.forEach( (ele) => ele[0] = dni );
+    let contactoAEliminar = agenda.find( ele => ele[0] === dni );
     let indiceAEliminar = agenda.indexOf(contactoAEliminar);
     agenda.splice(indiceAEliminar, 1);
     console.log('Se ha eliminado el contacto.');
@@ -64,6 +66,4 @@ function chekearDatos(dni, nombre, apellido, telefono){
         return false
     }
 }
-
-
 
