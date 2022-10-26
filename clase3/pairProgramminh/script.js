@@ -7,9 +7,10 @@
 // luego apellido y por último telefóno.
 
 class Contacto {
-    constructor(dni, nombre, telefono){
+    constructor(dni, nombre, apellido, telefono){
         this.dni = dni;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.telefono = telefono;
     }
 }
