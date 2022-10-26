@@ -1,0 +1,26 @@
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+button{
+    width: 30%;
+    border: 1px solid hsl(271, 56%, 43%);
+    padding: 1rem;
+    background-color: hsl(271, 56%, 83%);
+    border-radius: 15px;
+    transition: all .5s ease-in-out;
+}
+
+button:last-of-type{
+    background-color: hsl(160, 80%, 75%);
+    border: 1px solid hsl(160, 80%, 13%);
+
+}
+button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: -5px 5px 15px #000;
+}
