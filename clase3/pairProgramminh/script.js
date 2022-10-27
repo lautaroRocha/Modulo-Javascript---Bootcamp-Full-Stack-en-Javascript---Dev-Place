@@ -84,29 +84,7 @@ function chekearDatos(dni, nombre, apellido, telefono){
 
 
 
-let botonAñadir = document.querySelector('#agregar');
-let botonEliminar = document.querySelector('#eliminar');
-let botonBuscar = document.querySelector('#buscar');
-let botonAgenda = document.querySelector('#agenda');
 
-botonAñadir.onclick = () =>{
-    let dni = prompt('DNI del contacto');
-    let nombre = prompt('Nombre del contacto');
-    let apellido = prompt('Apellido del contacto')
-    let telefono = prompt('Telefono del contacto');
-    agregarContacto(parseInt(dni), nombre, apellido, parseInt(telefono))
-}
-botonEliminar.onclick = () =>{
-    let dniParaBorrar = prompt('DNI del contacto');
-    eliminarContacto(parseInt(dniParaBorrar));
-}
-botonBuscar.onclick = () =>{
-    let dniParaVer = prompt('DNI del contacto');
-    verContacto(parseInt(dniParaVer));
-}
-botonAgenda.onclick = () =>{
-    alert(JSON.stringify(agenda))
-}
 
 
    
