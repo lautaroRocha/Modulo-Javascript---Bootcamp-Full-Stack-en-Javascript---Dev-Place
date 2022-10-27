@@ -11,7 +11,7 @@
     --principal: #ce93d8;
     --prin-osc: #9c64a6;
     --terciario : hsl(160, 70%, 75%);
-    --ter-osc : hsl(160, 100%, 45%);
+    --ter-osc : hsl(150, 60%, 65%);
     --texto: hsl(291, 27%, 12%);
 }
 body{
@@ -22,6 +22,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('https://previews.123rf.com/images/noche/noche1602/noche160200082/52075211-striped-paper.jpg');
 }
 header{
     display: flex;
@@ -35,7 +36,7 @@ header{
 h1{
     font-size: clamp(3rem, 10vw, 5rem);
     letter-spacing: 1rem;
-    background-color: var(--principal);
+    background-color: var(--ter-osc);
     width: 100vw;
     text-align: center;
 }

@@ -66,7 +66,6 @@ function eliminarIndice(dni){
     let contactoAEliminar = agenda.find( ele => ele.dni === dni );
     let indiceAEliminar = agenda.indexOf(contactoAEliminar);
     agenda.splice(indiceAEliminar, 1);
-    alert('Se ha eliminado el contacto.');
 }
 
 function verIndice(dni){
