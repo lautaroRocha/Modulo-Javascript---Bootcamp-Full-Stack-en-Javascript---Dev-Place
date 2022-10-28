@@ -34,9 +34,9 @@ botonBuscar.onclick = () =>{
 
 botonOrdenDes.onclick = () => {
     agenda.sort(function (a,b){
-        if(a.apellido > b.apellido){
+        if(a.dni > b.dni){
             return 1;
-        }else if(a.apellido < b.apellido){
+        }else if(a.dni < b.dni){
             return -1;
         }else{
         return 0
@@ -47,9 +47,9 @@ botonOrdenDes.onclick = () => {
 
 botonOrdenAsc.onclick = () => {
     agenda.sort(function (a,b){
-        if(a.apellido < b.apellido){
+        if(a.dni < b.dni){
             return 1;
-        }else if(a.apellido > b.apellido){
+        }else if(a.dni > b.dni){
             return -1;
         }else
         return 0;
