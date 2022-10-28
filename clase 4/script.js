@@ -16,6 +16,7 @@ import {agregarContacto, verContacto, renovarAgenda, agenda} from "./functions.m
 let botonAñadir = document.querySelector('#agregar');
 let botonBuscar = document.querySelector('#buscar');
 let botonOrdenDes = document.querySelector('#ordenar-des');
+let botonOrdenAsc = document.querySelector('#ordenar-asc');
 
 botonAñadir.onclick = () =>{
     let dni = prompt('DNI del contacto');
@@ -32,10 +33,10 @@ botonBuscar.onclick = () =>{
 }
 
 botonOrdenDes.onclick = () => {
-    agenda.reverse(function (a,b){
-        if(a.apellido < b.apellido){
+    agenda.sort(function (a,b){
+        if(a.apellido > b.apellido){
             return 1;
-        }else if(a.apellido > b.apellido){
+        }else if(a.apellido < b.apellido){
             return -1;
         }else
         return 0;
@@ -43,7 +44,17 @@ botonOrdenDes.onclick = () => {
     renovarAgenda();
 }
 
-
+botonOrdenAsc.onclick = () => {
+    agenda.sort(function (a,b){
+        if(a.apellido < b.apellido){
+            return 1;
+        }else if(a.apellido > b.apellido){
+            return -1;
+        }else
+        return 0;
+    })  
+    renovarAgenda();
+}
 //contactos por defecto
 agregarContacto(40478142, 'Lautaro', 'Rocha', 2235502403);
 agregarContacto(42754844, 'Roberto', 'Ingaramo', 264458799);
