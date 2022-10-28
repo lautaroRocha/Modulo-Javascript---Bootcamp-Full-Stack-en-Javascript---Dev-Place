@@ -67,6 +67,7 @@ svg:hover{
 }
 main{
     margin-top: 5rem;
+    margin-bottom: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
