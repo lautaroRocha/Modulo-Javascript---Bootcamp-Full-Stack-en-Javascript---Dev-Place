@@ -70,8 +70,7 @@ function eliminarIndice(dni){
 }
 
 function verIndice(dni){
-    let contactoAVer = agenda.find( ele => ele.dni === dni );
-    let indiceAVer = agenda.indexOf(contactoAVer);
+    let indiceAVer = agenda.indexOf(agenda.find( ele => ele.dni === dni ));
     encontrarDatosDeContacto(agenda[indiceAVer])
 }
 
@@ -114,7 +113,6 @@ const generarCardContacto = (ele) => {
         btn.onclick = (e) => {
             let dni = e.target.parentElement.firstChild.textContent;
             // eliminarContacto(parseInt(parseInt(dni)));
-            console.log('asdas')
             editarContacto(parseInt(dni))
         }
     })
@@ -181,7 +179,7 @@ const editarContacto = (dni) =>{
         let nombre = prompt('nuevo nombre');
         let apellido = prompt('nuevo apellido');
         let telefono= prompt('nuevo telefono');
-    if(typeof nombre === "string" && typeof apellido === "string" && typeof telefono === "number"){
+    if(typeof nombre === "string" && typeof apellido === "string" && typeof parseInt(telefono) === "number"){
         let objetoAEditar = agenda[indiceDeContacto];
         objetoAEditar.nombre = nombre;
         objetoAEditar.apellido = apellido;

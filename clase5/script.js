@@ -42,16 +42,16 @@ class Persona{
             this.officeId = num;
         }
     }
-    class Profesor extends Empleado{
-        constructor(name, lastName, id, civilSt, enterYear, officeId, department){
-            super(name, lastName, id, civilSt, enterYear, officeId);
-            this.department = department;
+        class Profesor extends Empleado{
+            constructor(name, lastName, id, civilSt, enterYear, officeId, department){
+                super(name, lastName, id, civilSt, enterYear, officeId);
+                this.department = department;
+            }
         }
-    }
-    class PersonalNoDocente extends Empleado{
-        constructor(name, lastName, id, civilSt, enterYear, officeId, area){
-            super(name, lastName, id, civilSt, enterYear, officeId);
-            this.area = area;
+        class PersonalNoDocente extends Empleado{
+            constructor(name, lastName, id, civilSt, enterYear, officeId, area){
+                super(name, lastName, id, civilSt, enterYear, officeId);
+                this.area = area;
+            }
         }
-    }
 
