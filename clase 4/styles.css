@@ -22,7 +22,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('https://previews.123rf.com/images/noche/noche1602/noche160200082/52075211-striped-paper.jpg');
+    background-image: url('https://previews.123rf.com/images/noche/noche1602/noche160200082/52075211-striped-paer.jpg');
+    background-color: antiquewhite;
+
 }
 header{
     display: flex;
@@ -61,8 +63,7 @@ li>svg{
     transform: scale(1.2);
 }
 svg:hover{
-    cursor: pointer
-    ;
+    cursor: pointer;
 }
 main{
     margin-top: 5rem;
@@ -78,6 +79,7 @@ main{
     background-color: var(--terciario);
     display: flex;
     justify-content: space-around;
+    align-items: center;
     gap: 1rem;
     width: 90%;
     height: 5rem;
@@ -93,8 +95,8 @@ main{
 }
 .contacto>.borrar{
     position: absolute;
-    right: 1rem;
-    top: 1rem;
+    right: 7rem;
+    top: -2rem;
     background-color: var(--secu-osc);
     border-radius: 50%;
     display: none;
@@ -109,6 +111,32 @@ main{
     text-align: center;
     place-content: center;
 }
+#editar:hover{
+    cursor: pointer;
+}
+.resultado{
+    position: absolute;
+    flex-direction: column;
+    height: 40vh;
+    width: 90%;
+    background-color: var(--prin-osc);
+    margin-top: 25vh;
+    border: 2px solid var(--principal);
+    border-radius: 15px;
+    z-index: 99;
+    display: none;
+}
+.resultado>a{
+    text-decoration: none;
+    background-color: var(--principal);
+    padding: 1.5rem;
+    border-radius: 15px;
+    font-size: clamp(1rem, 5vw, 1.5rem);
+
+}
+
+
+
 
 
 

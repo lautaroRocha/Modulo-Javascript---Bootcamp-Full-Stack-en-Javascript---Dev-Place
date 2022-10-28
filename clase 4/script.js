@@ -1,10 +1,5 @@
-//pairProgramming del 26/10
+//pairProgramming del 27/10
 //Lautaro Rocha y Gonzalo Ordoñez
-
-
-// Hay que armar una agenda con cuatro datos, 
-// primero DnI, después nombre, 
-// luego apellido y por último telefóno.
 
 class Contacto {
     constructor(dni, nombre, apellido, telefono){
@@ -15,8 +10,9 @@ class Contacto {
     }
 }
 
-
 let agenda = [];
+let main = document.querySelector('main');
+let resultado = document.querySelector('.resultado')
 
 
 const agregarContacto = (dni, nombre, apellido, telefono) => {
@@ -58,7 +54,6 @@ const verContacto = (dni) => {
     }
 }
 
-// agregarContacto(40478142, "Lautaro", "Rocha", 2235502403)
 
 //FUNCIONES AUXILIARES
 
@@ -71,7 +66,7 @@ function eliminarIndice(dni){
 function verIndice(dni){
     let contactoAVer = agenda.find( ele => ele.dni === dni );
     let indiceAVer = agenda.indexOf(contactoAVer);
-    alert(JSON.stringify(agenda[indiceAVer]));
+    encontrarDatosDeContacto(agenda[indiceAVer])
 }
 
 function chekearDatos(dni, nombre, apellido, telefono){
@@ -82,41 +77,44 @@ function chekearDatos(dni, nombre, apellido, telefono){
     }
 }
 
+function encontrarDatosDeContacto(contacto){
+    let resultadoDni= document.querySelector('#resultado-dni');
+    let resultadoNombre= document.querySelector('#resultado-nombre')
+    let resultadoTel=  document.querySelector('#resultado-tel')
+    resultadoDni.textContent = contacto.dni;
+    resultadoNombre.textContent = `${contacto.apellido}, ${contacto.nombre}`;
+    resultadoTel.textContent = contacto.telefono;
+    resultado.style.display = "flex"; //vuelve visible la card con el resultado
+}
 
 //crear card de contacto
-let main = document.querySelector('main');
-
 
 const generarCardContacto = (ele) => {
-    let cardContacto = document.createElement('div');
-    let dniContacto = document.createElement('span');
-    dniContacto.setAttribute('class', 'dni')
-    let nombreContacto = document.createElement('span');
-    nombreContacto.setAttribute('class', 'name');
-    let telContacto = document.createElement('span');
-    telContacto.setAttribute('class', 'tel');
-    let botonBorrar = generarSVG();
-    cardContacto.setAttribute('class', 'contacto');
-    cardContacto.appendChild(dniContacto);
-    cardContacto.appendChild(nombreContacto);
-    cardContacto.appendChild(telContacto)
-    cardContacto.appendChild(botonBorrar);
-
-    dniContacto.textContent = ele.dni;
-    nombreContacto.textContent = `${ele.apellido}, ${ele.nombre} `;
-    telContacto.textContent= ele.telefono;
-
+    let cardContacto = escribirDatos(ele);
     main.appendChild(cardContacto)
+    //cada vez que se pintan las cards
+    //se levantan todos los botones nuevos
+    //y se programan los eventos
     botonEliminar = document.querySelectorAll('#eliminar');
     botonEliminar.forEach( (btn) =>{
         btn.onclick = (e) => {
             let dni = e.target.parentElement.firstChild.textContent;
-            eliminarContacto(parseInt(dni));
+            eliminarContacto(parseInt(parseInt(dni)));
         }
     })
+    botonEditar = document.querySelectorAll('#editar');
+    botonEditar.forEach( (btn) =>{
+        btn.onclick = (e) => {
+            let dni = e.target.parentElement.firstChild.textContent;
+            // eliminarContacto(parseInt(parseInt(dni)));
+            console.log('asdas')
+            editarContacto(parseInt(dni))
+        }
+    })
+
 }
 
-function generarSVG(){
+function generarBotonBorrar(){
     let botonBorrar = document.createElement('svg');
     botonBorrar.setAttribute('id', 'eliminar');
     botonBorrar.setAttribute('class', 'borrar')
@@ -124,19 +122,112 @@ function generarSVG(){
     return botonBorrar
 }
 
+function escribirDatos(ele){
+    let cardContacto = document.createElement('div');
+    let botonEditar = document.createElement('span')
+    let dniContacto = document.createElement('span');
+    let nombreContacto = document.createElement('span');
+    let telContacto = document.createElement('span');
+    let botonBorrar = generarBotonBorrar();
 
+    dniContacto.setAttribute('class', 'dni')
+    nombreContacto.setAttribute('class', 'name');
+    telContacto.setAttribute('class', 'tel');
+    cardContacto.setAttribute('class', 'contacto');
+    botonEditar.setAttribute('id', 'editar');
+
+    cardContacto.appendChild(dniContacto);
+    cardContacto.appendChild(nombreContacto);
+    cardContacto.appendChild(telContacto)
+    cardContacto.appendChild(botonEditar);
+    cardContacto.appendChild(botonBorrar);
+
+    botonEditar.textContent = "✏️"
+    dniContacto.textContent = ele.dni;
+    nombreContacto.textContent = `${ele.apellido}, ${ele.nombre} `;
+    telContacto.textContent= ele.telefono;
+
+    return cardContacto
+}
+
+//función para mostrar toda la agenda en el navegador
 const renovarAgenda = () =>{
-    main.innerHTML = "";
+    main.innerHTML = ""; //resetea la pantalla
     agenda.forEach( (ele) =>{
         generarCardContacto(ele);
     })
 }
 
+//editarcontacto
+
+const editarContacto = (dni) =>{
+    let contactoExiste = agenda.find( ele => ele.dni === dni);
+    let indiceDeContacto = agenda.indexOf(contactoExiste)
+        let nombre = prompt('nuevo nombre');
+        let apellido = prompt('nuevo apellido');
+        let telefono= prompt('nuevo telefono');
+    if(typeof nombre === "string" && typeof apellido === "string" && typeof telefono === "number"){
+        let objetoAEditar = agenda[indiceDeContacto];
+        objetoAEditar.nombre = nombre;
+        objetoAEditar.apellido = apellido;
+        objetoAEditar.telefono = telefono;
+    }else{
+        alert('datos inválidos')
+    }
+   
+    // if(!contactoExiste){
+    //     alert('Contacto inexistente');
+    // }else{
+    //     const op = prompt('Elija opcion a modificar: 1/Dni 2/Nombre 3/Apellido 4/Telefono')
+    //     const dat = prompt('Dato a modificar')
+    //     switch(op){
+    //         case '1':
+    //         for (let i = 0; i < agenda.length; i++) {
+    //             if (this.dni[i] === dni) {
+    //                 this.dni = dat;
+    //             }
+    //         }
+    //         break;
+
+    //         case'2':
+    //         for (let i = 0; i < agenda.length; i++) {
+    //             if (this.dni[i] === dni) {
+    //                 this.nombre = dat;
+    //             }
+    //         } 
+    //         break;
+
+    //         case'3':
+    //         for (let i = 0; i < agenda.length; i++) {
+    //             if (this.dni[i] === dni) {
+    //                 this.apellido = dat;
+    //             }
+    //         } 
+    //         break;
+
+    //         case'4':
+    //         for (let i = 0; i < agenda.length; i++) {
+    //             if (this.dni[i] === dni) {
+    //                 this.telefono = dat;
+    //             }
+    //         } 
+    //         break;
+
+    //         default:
+    //         alert('');
+    //         break;
+
+    //     }
+
+    // }
+    renovarAgenda()
+
+}
 
 ///BOTONES Y EVENTOS
 
 let botonAñadir = document.querySelector('#agregar');
-let botonEliminar;
+let botonEliminar, botonEditar;
 let botonBuscar = document.querySelector('#buscar');
 let botonOrdenAsc = document.querySelector('#ordenar-asc');
 let botonOrdenDes = document.querySelector('#ordenar-des');
@@ -155,34 +246,25 @@ botonBuscar.onclick = () =>{
     verContacto(parseInt(dniParaVer));
 }
 
-botonOrdenAsc.onclick = () => {
-    agenda.sort(function (a,b){
-        if(a.apellido > b.apellido){
-            return 1;
-        }else if(a.apellido < b.apellido){
-            return -1;
-        }else
-        return 0;
-    })  
-    renovarAgenda();
-}
-
 botonOrdenDes.onclick = () => {
-    agenda.sort(function (a,b){
+    agenda.reverse(function (a,b){
         if(a.apellido < b.apellido){
             return 1;
         }else if(a.apellido > b.apellido){
             return -1;
         }else
         return 0;
-    })  
+    })
     renovarAgenda();
 }
 
 
+
+//contactos por defecto
 agregarContacto(40478142, 'Lautaro', 'Rocha', 2235502403);
 agregarContacto(42754844, 'Roberto', 'Ingaramo', 264458799);
 agregarContacto(39654789, 'Gonzalo', 'Ordañoz', 223456998);
 agregarContacto(39674789, 'Gonzalo', 'Ardañoz', 223456998);
 
+//iniciar applicación al abrir el navegador
 renovarAgenda();
