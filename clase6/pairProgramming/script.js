@@ -1,8 +1,5 @@
-
-
 let posts;
 
-let postId = 6;
 
 let postComments;
 
@@ -10,13 +7,11 @@ let rutaPost = 'https://jsonplaceholder.typicode.com/posts'
 
 let post = 'https://jsonplaceholder.typicode.com/posts/1'
 
-let comments = `https://jsonplaceholder.typicode.com/posts/${postId}/comments`
-
 let section = document.querySelector('section')
 
-fetch(comments)
-.then( res => res.json())
-.then(data => postComments = data)
+let modal = document.querySelector('.modal');
+
+
 
 async function getPosts(){
    await fetch(rutaPost)
@@ -28,19 +23,63 @@ async function getPosts(){
 }
 
 function generateCard(post){
-    let card = document.createElement('div')
-    let title = document.createElement('span')
-    let body = document.createElement('p')
-    let btn = document.createElement('button')
+    let card = document.createElement('div');
+    let title = document.createElement('span');
+    let body = document.createElement('p');
+    let btn = document.createElement('button');
+    let id = document.createElement('span');
     
     title.textContent = post.title;
     body.textContent = post.body;
+    id.textContent = post.id;
     btn.textContent = 'VER COMENTARIOS'
+    btn.setAttribute('id', 'comment-btn')
     card.setAttribute('class', 'card');
-
+    id.style.display = "none";
+    card.appendChild(id);
     card.appendChild(title);
     card.appendChild(body);
     card.appendChild(btn);
 
     section.appendChild(card);
+}
+
+getPosts();
+
+setTimeout(()=>{
+    let btnComment = document.querySelectorAll('#comment-btn');
+    btnComment.forEach((btn) => {
+        btn.onclick = (e) =>{
+            modal.style.display = "flex"
+            modal.innerHTML= "";
+            let postId = e.target.parentElement.firstChild.textContent;
+            getComments(postId);
+        }
+    })
+}, 2500)
+
+async function getComments(id){
+    await fetch('https://jsonplaceholder.typicode.com/posts/' + id +'/comments')
+    .then( res => res.json())
+    .then(data => postComments = data)
+    postComments.forEach( (comments) =>{
+        generateComments(comments)
+        console.log(comments.body)
+    })
+}
+
+function generateComments(comments){
+    let card = document.createElement('div')
+    card.setAttribute("class", 'modal-comentario')
+    let email = document.createElement('span')
+    let comentario = document.createElement('p')
+
+    email.textContent = comments.email;
+    comentario.textContent = comments.body
+    console.log(comentario)
+    card.appendChild(email);
+    card.appendChild(comentario);
+
+    modal.appendChild(card)
+
 }
