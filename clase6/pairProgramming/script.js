@@ -1,11 +1,8 @@
-let posts;
 
 
-let postComments;
+let posts, postComments;
 
 let rutaPost = 'https://jsonplaceholder.typicode.com/posts'
-
-let post = 'https://jsonplaceholder.typicode.com/posts/1'
 
 let section = document.querySelector('section')
 
@@ -22,41 +19,37 @@ async function getPosts(){
         })
 }
 
-function generateCard(post){
-    let card = document.createElement('div');
-    let title = document.createElement('span');
-    let body = document.createElement('p');
-    let btn = document.createElement('button');
-    let id = document.createElement('span');
-    
-    title.textContent = post.title;
-    body.textContent = post.body;
-    id.textContent = post.id;
-    btn.textContent = 'VER COMENTARIOS'
-    btn.setAttribute('id', 'comment-btn')
-    card.setAttribute('class', 'card');
-    id.style.display = "none";
-    card.appendChild(id);
-    card.appendChild(title);
-    card.appendChild(body);
-    card.appendChild(btn);
+    function generateCard(post){
+        let card = document.createElement('div');
+        let title = document.createElement('span');
+        let body = document.createElement('p');
+        let btn = document.createElement('button');
+        let id = document.createElement('span');
+        
+        title.textContent = post.title;
+        body.textContent = post.body;
+        id.textContent = post.id;
+        btn.textContent = 'VER COMENTARIOS'
+        btn.setAttribute('id', 'comment-btn')
+        card.setAttribute('class', 'card');
+        id.style.display = "none";
 
-    section.appendChild(card);
-}
+        card.appendChild(id);
+        card.appendChild(title);
+        card.appendChild(body);
+        card.appendChild(btn);
 
-getPosts();
+        section.appendChild(card);
 
-setTimeout(()=>{
-    let btnComment = document.querySelectorAll('#comment-btn');
-    btnComment.forEach((btn) => {
         btn.onclick = (e) =>{
             modal.style.display = "flex"
             modal.innerHTML= "";
             let postId = e.target.parentElement.firstChild.textContent;
             getComments(postId);
         }
-    })
-}, 2500)
+    }
+
+
 
 async function getComments(id){
     await fetch('https://jsonplaceholder.typicode.com/posts/' + id +'/comments')
@@ -64,22 +57,35 @@ async function getComments(id){
     .then(data => postComments = data)
     postComments.forEach( (comments) =>{
         generateComments(comments)
-        console.log(comments.body)
     })
 }
 
-function generateComments(comments){
-    let card = document.createElement('div')
-    card.setAttribute("class", 'modal-comentario')
-    let email = document.createElement('span')
-    let comentario = document.createElement('p')
+    function generateComments(comments){
+        let card = document.createElement('div')
+        card.setAttribute("class", 'modal-comentario')
+        let email = document.createElement('span')
+        let comentario = document.createElement('p')
 
-    email.textContent = comments.email;
-    comentario.textContent = comments.body
-    console.log(comentario)
-    card.appendChild(email);
-    card.appendChild(comentario);
+        email.textContent = comments.email;
+        comentario.textContent = comments.body
+        console.log(comentario)
+        card.appendChild(email);
+        card.appendChild(comentario);
 
-    modal.appendChild(card)
+        modal.appendChild(card)
 
-}
+    }
+
+    getPosts();
+
+    // setTimeout(()=>{
+    //     let btnComment = document.querySelectorAll('#comment-btn');
+    //     btnComment.forEach((btn) => {
+    //         btn.onclick = (e) =>{
+    //             modal.style.display = "flex"
+    //             modal.innerHTML= "";
+    //             let postId = e.target.parentElement.firstChild.textContent;
+    //             getComments(postId);
+    //         }
+    //     })
+    // }, 2500)
