@@ -14,11 +14,13 @@ section{
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin: 0 auto;
 }
 
 section>.card{
-    width: 40%;
+    width: clamp(80px, 30vw, 200px);
     height: 10rem;
     background-color: aquamarine;
     margin: .5rem;
+    height: fit-content;
 }
