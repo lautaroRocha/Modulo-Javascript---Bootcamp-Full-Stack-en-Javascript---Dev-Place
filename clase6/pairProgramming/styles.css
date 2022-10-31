@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+}
+
+section{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+section>.card{
+    width: 40%;
+    height: 10rem;
+    background-color: aquamarine;
+    margin: .5rem;
+}
