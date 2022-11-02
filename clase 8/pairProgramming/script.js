@@ -21,15 +21,18 @@ const palabras = [
     }
 ]
 
+let guiones = [];
+const etapas= ["img/Fase7.png", "img/Fase6.png", "img/Fase5.png", "img/Fase4.png", "img/Fase3.png", "img/Fase2.png", "img/Fase1.png"];
+
+
 let pantalla = document.querySelector('.juego');
 let juegoLetras = document.querySelector('.juego-letras');
 let intentos = document.querySelector('.intentos')
-let palabraAJugar;
 let ahorcado = document.querySelector('.juego-img');
-let guiones = [];
-let etapas= ["img/Fase7.png", "img/Fase6.png", "img/Fase5.png", "img/Fase4.png", "img/Fase3.png", "img/Fase2.png", "img/Fase1.png"];
+let botonPista = document.querySelector('#pedir-pista')
+let pista = document.querySelector('#pista')
 
-let intentosQueQuedan;
+let palabraAJugar, intentosQueQuedan;
 
 function empezarJuego(){
     borrarPantalla();
@@ -49,8 +52,6 @@ function borrarPantalla(){
     intentos.innerHTML = " ";
 }
 
-let botonPista = document.querySelector('#pedir-pista')
-let pista = document.querySelector('#pista')
 
 botonPista.onclick = () => {
     pista.textContent = palabraAJugar.pista;
@@ -63,17 +64,12 @@ botonesLetras.forEach( (btn) =>{
     e.target.setAttribute('disabled', 'disabled');
     let letraElegida = btn.textContent;
     if(comprobarLaLetra(letraElegida)){
-        let letrasCorrectas = palabraAJugar.letras.filter(letra => letra === letraElegida);
-        if(letrasCorrectas.length === 2){
-            letrasCorrectas.forEach( (letra) =>{
-                console.log(letrasCorrectas.length)
-                let indiceDeLetra = palabraAJugar.letras.indexOf(letra);
-                guiones[indiceDeLetra] = letra;
-            } )
-        }else{
-            let indiceDeLetra = palabraAJugar.letras.indexOf(letrasCorrectas[0]);
-            guiones[indiceDeLetra] = letrasCorrectas[0];
-        }        
+            palabraAJugar.letras.forEach((ele, indiceDeLetra)=>{
+                if(letraElegida === ele){
+                    guiones[indiceDeLetra] = ele;
+                }
+            })
+
         juegoLetras.innerHTML = guiones.join(' '); 
 
 
@@ -96,6 +92,7 @@ function comprobarIntentos(){
      pantalla.innerHTML = "PERDISTE <a href=''>empezar juego de nuevo</a>"
     }
 }
+
 
 
 
