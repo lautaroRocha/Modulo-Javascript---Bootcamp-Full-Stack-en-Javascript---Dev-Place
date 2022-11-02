@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h2>Primer Ejercicio</h2>
+        <div class="calculadora">
+            <input type="number" id="primer-operando"/>
+            <input list="op" id="operador"/>
+                <datalist id="op">
+                    <option value="+">
+                    <option value="-">
+                    <option value="x">
+                    <option value="%">
+                </datalist>
+            <input type="number" id="segundo-operando"/>
+            <button id="calculadora-boton">Calcular</button>
+        </div>
+        <p id="calculadora-resultado"></p>
+
+
+
+    </section>
+    <section>
+        <h2>Segundo Ejercicio</h2>
+        <p>Ingresá números en el campo de abajo apretando el botón <br>
+        cuando hayas ingresado 10, verás las opciones</p>
+       <label>
+         <input type="number" id="nuevo-numero"> 
+         <button id="añadir-numero">ingresar número</button>
+       </label>
+        <div class="botones-ocultos">
+            <button id="mayor">Mayor número</button>
+            <button id="menor">Menor número</button>
+            <button id="par">Mostrar pares</button>
+            <button id="impar">Mostrar impares</button>
+            <button id="ascendente">Ordenar ascendente</button>
+            <button id="descendente">Ordenar descendente</button>
+        </div>
+        <p id="numeros-resultado"></p>
+    </section>
+    <section>
+        <h2>Tercer Ejercicio</h2>
+        <p>Los números que pueden elegir son todos los números enteros <br>
+        del 1 al 10.</p>
+        <div class="jugador" id="uno">
+            <span>JUGADOR UNO</span>
+            <input type="number" class="numero-uno">
+            <input type="number" class="numero-uno">
+            <input type="number" class="numero-uno">
+            <input type="number" class="numero-uno">
+            <button id="decidir-uno">OK</button>
+        </div>
+        <div class="jugador" id="dos">
+            <span>JUGADOR DOS</span>
+            <input type="number" class="numero-dos">
+            <input type="number" class="numero-dos">
+            <input type="number" class="numero-dos">
+            <input type="number" class="numero-dos">
+            <button id="decidir-dos">OK</button>
+        </div>
+        <div class="jugador" id="tres">
+            <span>JUGADOR TRES</span>
+            <input type="number" class="numero-tres">
+            <input type="number" class="numero-tres">
+            <input type="number" class="numero-tres">
+            <input type="number" class="numero-tres">
+            <button id="decidir-tres">OK</button>
+        </div>
+        <div class="arbitro">
+            
+        </div>
+    </section>
+    <section>
+        <h2></h2>
+    </section>
+    <section>
+        <h2></h2>
+    </section>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
